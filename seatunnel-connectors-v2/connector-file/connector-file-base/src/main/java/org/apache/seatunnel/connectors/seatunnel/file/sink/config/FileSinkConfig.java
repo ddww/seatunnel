@@ -83,7 +83,7 @@ public class FileSinkConfig extends BaseFileSinkConfig implements PartitionConfi
 
         // if the config sink_columns is empty, all fields in SeaTunnelRowTypeInfo will being write
         if (CollectionUtils.isEmpty(this.sinkColumnList)) {
-            this.sinkColumnList = Arrays.asList(seaTunnelRowTypeInfo.getFieldNames());
+            this.sinkColumnList = new ArrayList<>(Arrays.asList(seaTunnelRowTypeInfo.getFieldNames()));
         }
 
         if (config.hasPath(BaseSinkConfig.PARTITION_BY.key())) {
